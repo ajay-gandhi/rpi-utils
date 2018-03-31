@@ -2,12 +2,13 @@
 const http = require("http");
 const Logger = require("./logger");
 
-const LOG = new Logger("maintenance-server");
+const LOG = new Logger("not-found-server");
 const PORT = process.argv[2] || 8000;
 
 const server = http.createServer((req, res) => {
   LOG.log(`Request URL: ${req.url}`);
-  res.end("Site under maintenance");
+  res.statusCode = 404;
+  res.end("404 not found");
 });
 
 server.listen(PORT, (err) => {
