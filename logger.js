@@ -11,9 +11,9 @@ module.exports = (function () {
 
   Logger.prototype.log = function (...args) {
     if (this.isDev) {
-      args.forEach(a => console.log(`[${timestamp()}] ${a}\n`));
+      console.log(timestamp(), ...args);
     } else {
-      args.forEach(a => this.file.write(`[${timestamp()}] ${a}\n`));
+      args.forEach(a => this.file.write(`[${timestamp()}] ${a.toString()}\n`));
     }
   };
 
